@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class ProjectsComponent implements OnInit {
   primaryColor = 'red';
   projects$;
-  selectedProject: Project[];
+  selectedProject: Project;
 
   constructor(private projectService: ProjectsService) {}
 
@@ -55,7 +55,11 @@ export class ProjectsComponent implements OnInit {
   }
 
   updateProject(project) {
-
+    this.projectService.update(project.id)
+      .subscribe(result => {
+        this.getProjects()
+        this.resetProject();
+      });
   }
 
   deleteProject(project) {
