@@ -47,7 +47,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   createProject(project) {
-    this.projectService.create(project.id)
+    this.projectService.create(project)
       .subscribe(result => {
         this.getProjects()
         this.resetProject();
@@ -55,7 +55,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   updateProject(project) {
-    this.projectService.update(project.id)
+    this.projectService.update(project)
       .subscribe(result => {
         this.getProjects()
         this.resetProject();
